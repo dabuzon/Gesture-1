@@ -28,13 +28,13 @@ let loaders = {
                 }
             }]
         },
-        /* {
+        {
             test: /\.scss$/,
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
                 use: ['css-loader', 'sass-loader']
             })
-        }, */
+        },
         {
             test: /\.m?js$/,
             exclude: /(node_modules|bower_components)/,
@@ -44,7 +44,17 @@ let loaders = {
                     presets: ['@babel/preset-env']
                 }
             }
-        }
+        },
+        {
+            test: require.resolve('jquery'),
+            use: [{
+                loader: 'expose-loader',
+                options: 'jQuery'
+            }, {
+                loader: 'expose-loader',
+                options: '$'
+            }]
+        },
 
     ]
 
@@ -61,6 +71,10 @@ let optimization = {
 }
 
 let plugins = [
+    new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery'
+    }),
     new HtmlWebpackPlugin({
         title: 'Darin Buzon',
         template: './src/index.html',
