@@ -1,19 +1,18 @@
-var app = require('express');
-var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
-
-connections = [];
-
-server.listen(process.env.PORT || 3000);
-console.log('Server running');
+var express = require('express');
+var app = express();
+var server = app.listen(process.env.PORT || 3000);
+var socket = require('socket.io');
+var io = socket(server);
 
 app.use(express.static('public'));
+console.log("The server is running");
 
-io.on('connection', function (socket) {
-    connections.push(socket);
-    console.log('Connected: %s sockets', connections.length);
+io.sockets.on('connection', newConnection);
 
-    socket.on('send message', function(data) {
-        io.sockets.emit('new message', {msg: data});
-    });
-});
+function newConnection(socket) {
+    socket.on('mouse', mouseMirror);
+    
+    function mouseMirror(data) {
+        socket.broadcast.emit('mouse', data);
+    }
+}
