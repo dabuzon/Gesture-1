@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -14,7 +15,7 @@
     <style>
         @font-face {
             font-family: 'Standard Book';
-            src: url('/standard-book-webfont.ttf');
+            src: url('/assets/font.ttf');
         }
 
         html {
@@ -32,9 +33,9 @@
 
         div {
             position: absolute;
-            z-index: 1;
             color: white;
             text-align: center;
+            z-index: 99;
         }
 
         @media (min-device-width: 1200px) {
@@ -71,7 +72,12 @@
                 if (count < inst.length) {
                     count = count + increment;
                 } else if (count == inst.length) {
-                    //some shit breaks
+                    $('div').css({
+                        'background-color': 'black',
+                        'color': 'black',
+                        'width': '100%',
+                        'height': '100%'
+                    });
                 }
             };
         })
