@@ -12,40 +12,51 @@
     <title>Document</title>
 
     <style>
-        html,
+        @font-face {
+            font-family: 'Standard Book';
+            src: url('/standard-book-webfont.ttf');
+        }
+
+        html {
+            height: 100%;
+        }
+
         body {
             height: 100%;
             margin: 0;
             user-select: none;
-            font-family: serif;
+            font-family: 'Standard Book';
+            overflow: hidden;
+            font-size: 5rem;
         }
 
         div {
-            margin: 0;
-            display: inline;
-
+            position: absolute;
+            z-index: 1;
+            color: white;
             text-align: center;
-
-            /* color: white; */
         }
 
-        .p5Canvas {
-            height: 100%;
+        @media (min-device-width: 1200px) {
+            div {
+                width: 100%;
+                font-size: 15rem;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- <div></div> -->
+    <div></div>
 
     <script src="sketch.js"></script>
     <script>
         $(document).ready(function () {
             var inst = ['DRAW ME', 'DRAW ON ME', 'DRAW WITH ME', 'DRAW ABOUT ME',
-                'DRAW WHAT YOU LIKE ABOUT ME', 'DRAW WHAT YOU HATE ABOUT ME',
-                'DRAW WHY I AM WITH YOU TODAY', 'DRAW ME WHERE I AM TODAY',
-                'DRAW LIKE YOU ARE ME YESTERDAY', 'DRAW AS IF I DIED TODAY', 'DRAW YOU AS I AM',
+                'DRAW WHY YOU LIKE ME', 'DRAW WHY YOU HATE ME',
+                'DRAW WHY I AM HERE', 'DRAW ME WHERE I AM TODAY',
+                'DRAW LIKE YOU ARE ME TMRW', 'DRAW AS IF I DIED TODAY', 'DRAW YOU AS I AM',
                 'DRAW ME AS YOU ARE', 'DRAW ALL OVER MY BODY', 'DRAW YOU AS YOU ARE',
                 'DRAW ME INTO YOUR SPACE', 'DRAW YOU INTO MY SPACE', 'DRAW ME UNTIL I AM YOU',
                 'DRAW YOU UNTIL I AM ME',
@@ -58,7 +69,7 @@
             function timer() {
                 $("div").html(inst[count]);
                 if (count < inst.length) {
-                    count = count+increment;
+                    count = count + increment;
                 } else if (count == inst.length) {
                     //some shit breaks
                 }

@@ -19,7 +19,7 @@ function draw(data) {
     off += 0.025;
 
     textSize(sizeData.x);
-    text(emojis[Math.floor(Math.random() * emojis.length)], data.x - 50, data.y + 50);
+    text(emojis[Math.floor(Math.random() * emojis.length)], data.x - 60, data.y + 50);
 }
 
 mouseDragged = mouseClicked = touchMoved = touchStarted = function () {
@@ -34,7 +34,7 @@ mouseDragged = mouseClicked = touchMoved = touchStarted = function () {
     off += 0.025;
 
     textSize(sizeData.x);
-    text(emojis[Math.floor(Math.random() * emojis.length)], mouseX - 50, mouseY + 50);
+    text(emojis[Math.floor(Math.random() * emojis.length)], mouseX - 60, mouseY + 50);
     socket.emit('mouse', data);
 }
 
