@@ -14,17 +14,57 @@
     <style>
         html,
         body {
+            height: 100%;
             margin: 0;
-            padding: 0;
-            overflow: hidden;
             user-select: none;
+            font-family: serif;
+        }
+
+        div {
+            margin: 0;
+            display: inline;
+
+            text-align: center;
+
+            /* color: white; */
+        }
+
+        .p5Canvas {
+            height: 100%;
         }
     </style>
 </head>
 
 <body>
 
+    <!-- <div></div> -->
+
     <script src="sketch.js"></script>
+    <script>
+        $(document).ready(function () {
+            var inst = ['DRAW ME', 'DRAW ON ME', 'DRAW WITH ME', 'DRAW ABOUT ME',
+                'DRAW WHAT YOU LIKE ABOUT ME', 'DRAW WHAT YOU HATE ABOUT ME',
+                'DRAW WHY I AM WITH YOU TODAY', 'DRAW ME WHERE I AM TODAY',
+                'DRAW LIKE YOU ARE ME YESTERDAY', 'DRAW AS IF I DIED TODAY', 'DRAW YOU AS I AM',
+                'DRAW ME AS YOU ARE', 'DRAW ALL OVER MY BODY', 'DRAW YOU AS YOU ARE',
+                'DRAW ME INTO YOUR SPACE', 'DRAW YOU INTO MY SPACE', 'DRAW ME UNTIL I AM YOU',
+                'DRAW YOU UNTIL I AM ME',
+            ];
+            var count = 0;
+            var increment = 1;
+            timer();
+            var counter = setInterval(timer, 4000);
+
+            function timer() {
+                $("div").html(inst[count]);
+                if (count < inst.length) {
+                    count = count+increment;
+                } else if (count == inst.length) {
+                    //some shit breaks
+                }
+            };
+        })
+    </script>
 </body>
 
 </html>

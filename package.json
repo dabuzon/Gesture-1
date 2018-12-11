@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Gesture 1 final exhibition",
   "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "start:dev": "live-server --port=3000 public"
+  },
   "repository": "https://github.com/dabuzon/Gesture-1.git",
   "author": "Darin Buzon",
   "license": "MIT",
@@ -11,5 +15,8 @@
     "jquery": "^3.3.1",
     "p5": "^0.7.2",
     "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
   }
 }
